@@ -3,7 +3,9 @@ const express = require("express");
 const MongoClient = require("mongodb").MongoClient;
 const PORT = 3000;
 const app = express();
+const cors = require("cors");
 app.use(express.json());
+app.use(cors());
 
 const dbName = "mean_to_do_list";
 
