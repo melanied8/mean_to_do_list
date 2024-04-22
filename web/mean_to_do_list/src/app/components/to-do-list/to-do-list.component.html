@@ -1,7 +1,70 @@
-<span class="example-list-section">
-  <ng-container *ngFor="let task of tasks">
-    <mat-checkbox class="example-margin">
-      {{ task.title }}
-    </mat-checkbox>
-  </ng-container>
-</span>
+<ng-container>
+  <div cdkDropListGroup>
+    <app-button-create-task></app-button-create-task>
+    <div class="example-container">
+      <h2>Not started</h2>
+
+      <div
+        cdkDropList
+        [cdkDropListData]="allTasks"
+        class="example-list"
+        (cdkDropListDropped)="drop($event, 'Not started')"
+      >
+        <ng-container *ngFor="let task of allTasks">
+          <div
+            *ngIf="task.status == 'Not started'"
+            class="example-box"
+            cdkDrag
+            id="{{ task.id }}"
+          >
+            {{ task.title }}
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="example-container">
+      <h2>In progress</h2>
+
+      <div
+        cdkDropList
+        [cdkDropListData]="allTasks"
+        class="example-list"
+        (cdkDropListDropped)="drop($event, 'In progress')"
+      >
+        <ng-container *ngFor="let task of allTasks">
+          <div
+            *ngIf="task.status == 'In progress'"
+            class="example-box"
+            cdkDrag
+            id="{{ task.id }}"
+          >
+            {{ task.title }}
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="example-container">
+      <h2>Done</h2>
+
+      <div
+        cdkDropList
+        [cdkDropListData]="allTasks"
+        class="example-list"
+        (cdkDropListDropped)="drop($event, 'Done')"
+      >
+        <ng-container *ngFor="let task of allTasks">
+          <div
+            *ngIf="task.status == 'Done'"
+            class="example-box"
+            cdkDrag
+            id="{{ task.id }}"
+          >
+            {{ task.title }}
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</ng-container>

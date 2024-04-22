@@ -19,8 +19,14 @@ MongoClient.connect(
     }
     const db = client.db(dbName);
     const taskCollection = db.collection("task");
+    const labelCollection = db.collection("label");
+    const statusCollection = db.collection("status");
     const taskRouter = require("./routes/tasks/index.js")(taskCollection);
+    const labelRouter = require("./routes/labels/index.js")(labelCollection);
+    const statusRouter = require("./routes/status/index.js")(statusCollection);
     app.use("/api/tasks", taskRouter);
+    app.use("/api/labels", labelRouter);
+    app.use("/api/status", statusRouter);
 
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
