@@ -14,9 +14,5 @@ export class ButtonCreateTaskComponent {
   constructor(public dialog: MatDialog) {}
   openDialog() {
     const dialogRef = this.dialog.open(DialogCreateTaskComponent);
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
   }
 }

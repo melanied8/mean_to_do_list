@@ -15,7 +15,6 @@ module.exports = function (taskCollection) {
 
   router.get("/:taskId", async (req, res) => {
     try {
-      console.log(req.params.taskId);
       const nid = new ObjectId(req.params.taskId);
       const taskResult = await taskCollection.findOne({ _id: nid });
       if (!taskResult) {
@@ -28,10 +27,14 @@ module.exports = function (taskCollection) {
     }
   });
 
-  router.post("/", async (req, res) => {
+  router.put("/", async (req, res) => {
     try {
       const newTask = req.body;
-      await taskCollection.insertOne(newUser);
+      await taskCollection.insertOne({
+        title: newTask.title,
+        label: newTask.label,
+        status: newTask.status,
+      });
       res.status(201).json({
         message: "Task created successfully",
         task: newTask,
@@ -41,9 +44,8 @@ module.exports = function (taskCollection) {
     }
   });
 
-  router.put("/:taskId", async (req, res) => {
+  router.post("/:taskId", async (req, res) => {
     try {
-      console.log(req.params.taskId);
       const nid = new ObjectId(req.params.taskId);
       const updates = req.body;
 

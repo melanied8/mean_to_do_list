@@ -1,1 +1,23 @@
-<p>dialog-create-task works!</p>
+<h2 mat-dialog-title>Create a task</h2>
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <mat-dialog-content class="mat-typography">
+    <label for="title">Title: </label>
+    <input id="title" type="text" formControlName="title" /><br />
+    <label for="label">Label: </label><br />
+    <ng-container *ngFor="let label of allLabels">
+      <input
+        type="radio"
+        id="label"
+        name="label"
+        value="{{ label.title }}"
+        formControlName="label"
+      />
+      <label for="{{ label.title }}">{{ label.title }}</label
+      ><br />
+    </ng-container>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-dialog-close>Cancel</button>
+    <button type="submit">Submit</button>
+  </mat-dialog-actions>
+</form>

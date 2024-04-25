@@ -13,7 +13,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { LucideAngularModule, Pen } from 'lucide-angular';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogCreateTaskComponent } from './components/dialog-create-task/dialog-create-task.component';
-
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +35,8 @@ import { DialogCreateTaskComponent } from './components/dialog-create-task/dialo
     MatIconModule,
     MatButtonModule,
     MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
     LucideAngularModule.pick({ Pen }),
   ],
   providers: [],

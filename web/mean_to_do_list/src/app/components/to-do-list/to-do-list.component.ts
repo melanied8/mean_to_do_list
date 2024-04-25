@@ -15,7 +15,6 @@ export class ToDoListComponent implements OnInit {
   constructor(private taskService: TaskService) {}
   ngOnInit(): void {
     this.taskService.getTasks().subscribe((res) => {
-      console.log('test');
       res.forEach((element: any) => {
         let task: Task = {
           title: element.title,
@@ -23,10 +22,13 @@ export class ToDoListComponent implements OnInit {
           id: element._id,
           status: element.status,
         };
-        console.log(task);
         this.allTasks.push(task);
       });
     });
+  }
+
+  test() {
+    console.log('test');
   }
 
   getTaskFromId(id: string): Task {
@@ -43,9 +45,9 @@ export class ToDoListComponent implements OnInit {
 
   drop($event: any, status: string) {
     let task = this.getTaskFromId($event.item.element.nativeElement.id);
-    if (task.status !== status) {
+    if (task.status !== status && task.id) {
       task.status = status;
-      this.taskService.updateTask(task.id, task).subscribe(() => {
+      this.taskService.updateTask(task.id, task).subscribe((res) => {
         this.taskService.getTasks();
       });
     }

@@ -1,6 +1,5 @@
 <ng-container>
   <div cdkDropListGroup>
-    <app-button-create-task></app-button-create-task>
     <div class="example-container">
       <h2>Not started</h2>
 
@@ -60,11 +59,13 @@
             class="example-box"
             cdkDrag
             id="{{ task.id }}"
+            onclick="test()"
           >
             {{ task.title }}
           </div>
         </ng-container>
       </div>
     </div>
+    <app-button-create-task></app-button-create-task>
   </div>
 </ng-container>

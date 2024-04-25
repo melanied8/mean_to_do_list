@@ -14,11 +14,13 @@ export class TaskService {
     return this.http.get<any>(this.apiUrl);
   }
 
-  createTask(task: Task): Observable<any> {
-    return this.http.post<any>(this.apiUrl, task);
+  createTask(task: Task) {
+    this.http.put<any>(this.apiUrl, task).subscribe((res) => {
+      console.log(res);
+    });
   }
 
   updateTask(taskId: string, updates: Task): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/${taskId}`, updates);
+    return this.http.post<any>(`${this.apiUrl}/${taskId}`, updates);
   }
 }
