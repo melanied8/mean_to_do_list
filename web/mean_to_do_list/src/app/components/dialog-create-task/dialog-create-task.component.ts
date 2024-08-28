@@ -3,8 +3,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { LabelService } from 'src/app/services/label/label.service';
 import { TaskService } from 'src/app/services/task/task.service';
-import { Label } from 'src/models/Label';
-import { Task } from 'src/models/Task';
+import { Label } from 'src/app/models/Label';
+import { Task } from 'src/app/models/Task';
 
 @Injectable({
   providedIn: 'root',
@@ -59,6 +59,7 @@ export class DialogCreateTaskComponent {
     this.taskService.createTask(newTask).subscribe((res) => {
       console.log('task created :', res);
       this.taskService.getTasks();
+      this.dialog.closeAll();
     });
   }
 }

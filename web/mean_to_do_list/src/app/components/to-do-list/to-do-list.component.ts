@@ -1,6 +1,6 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { TaskService } from 'src/app/services/task/task.service';
-import { Task } from 'src/models/Task';
+import { Task } from 'src/app/models/Task';
 import {
   CdkDragDrop,
   moveItemInArray,
