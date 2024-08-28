@@ -53,7 +53,12 @@ export class DialogCreateTaskComponent {
       title: title,
       status: 'Not started',
       label: label,
+      id: '',
+      position: 1,
     };
-    this.taskService.createTask(newTask);
+    this.taskService.createTask(newTask).subscribe((res) => {
+      console.log('task created :', res);
+      this.taskService.getTasks();
+    });
   }
 }

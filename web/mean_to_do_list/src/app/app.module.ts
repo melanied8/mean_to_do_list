@@ -10,7 +10,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ButtonCreateTaskComponent } from './components/button-create-task/button-create-task.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { LucideAngularModule, Pen } from 'lucide-angular';
+import { LucideAngularModule, Pen, Trash2 } from 'lucide-angular';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogCreateTaskComponent } from './components/dialog-create-task/dialog-create-task.component';
 import {
@@ -19,6 +19,8 @@ import {
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { MatChipsModule } from '@angular/material/chips';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +39,8 @@ import {
     MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
-    LucideAngularModule.pick({ Pen }),
+    LucideAngularModule.pick({ Pen, Trash2 }),
+    MatChipsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

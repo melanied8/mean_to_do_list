@@ -5,18 +5,16 @@
 
       <div
         cdkDropList
-        [cdkDropListData]="allTasks"
+        [cdkDropListData]="notStartedTasks"
         class="example-list"
         (cdkDropListDropped)="drop($event, 'Not started')"
       >
-        <ng-container *ngFor="let task of allTasks">
-          <div
-            *ngIf="task.status == 'Not started'"
-            class="example-box"
-            cdkDrag
-            id="{{ task.id }}"
-          >
-            {{ task.title }}
+        <ng-container *ngFor="let task of notStartedTasks">
+          <div class="example-box" cdkDrag id="{{ task.id }}">
+            <div class="flex">
+              {{ task.title }}
+              <mat-chip disabled>{{ task.label }}</mat-chip>
+            </div>
           </div>
         </ng-container>
       </div>
@@ -24,21 +22,18 @@
 
     <div class="example-container">
       <h2>In progress</h2>
-
       <div
         cdkDropList
-        [cdkDropListData]="allTasks"
+        [cdkDropListData]="inProgressTasks"
         class="example-list"
         (cdkDropListDropped)="drop($event, 'In progress')"
       >
-        <ng-container *ngFor="let task of allTasks">
-          <div
-            *ngIf="task.status == 'In progress'"
-            class="example-box"
-            cdkDrag
-            id="{{ task.id }}"
-          >
-            {{ task.title }}
+        <ng-container *ngFor="let task of inProgressTasks">
+          <div class="example-box" cdkDrag id="{{ task.id }}">
+            <div class="flex">
+              {{ task.title }}
+              <mat-chip disabled>{{ task.label }}</mat-chip>
+            </div>
           </div>
         </ng-container>
       </div>
@@ -46,26 +41,29 @@
 
     <div class="example-container">
       <h2>Done</h2>
-
       <div
         cdkDropList
-        [cdkDropListData]="allTasks"
+        [cdkDropListData]="doneTasks"
         class="example-list"
         (cdkDropListDropped)="drop($event, 'Done')"
       >
-        <ng-container *ngFor="let task of allTasks">
-          <div
-            *ngIf="task.status == 'Done'"
-            class="example-box"
-            cdkDrag
-            id="{{ task.id }}"
-            onclick="test()"
-          >
-            {{ task.title }}
+        <ng-container *ngFor="let task of doneTasks">
+          <div class="example-box" cdkDrag id="{{ task.id }}">
+            <div class="flex">
+              {{ task.title }}
+              <mat-chip disabled>{{ task.label }}</mat-chip>
+              <button
+                mat-mini-fab
+                aria-label="delete-icon"
+                (click)="deleteTask(task)"
+              >
+                <lucide-icon name="Trash2"></lucide-icon>
+              </button>
+            </div>
           </div>
         </ng-container>
       </div>
     </div>
-    <app-button-create-task></app-button-create-task>
   </div>
+  <app-button-create-task></app-button-create-task>
 </ng-container>
